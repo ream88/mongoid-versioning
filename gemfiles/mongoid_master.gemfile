@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'mongoid', github: 'mongoid/mongoid'
+gem 'activesupport', '4.0.0.rc1'
+
+gem 'rspec'
+gem 'rake'
