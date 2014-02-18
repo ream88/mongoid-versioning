@@ -4,8 +4,6 @@ test:
       database: mongoid_test
       hosts:
         - <%=ENV["MONGOID_SPEC_HOST"]%>:<%=ENV["MONGOID_SPEC_PORT"]%>
-      options:
-        consistency: :strong
     mongohq_single:
       database: <%=ENV["MONGOHQ_SINGLE_NAME"]%>
       username: <%=ENV["MONGOHQ_SINGLE_USER"]%>
@@ -14,7 +12,6 @@ test:
         - <%=ENV["MONGOHQ_SINGLE_URL"]%>
       options:
         safe: true
-        consistency: :strong
     mongohq_repl:
       database: <%=ENV["MONGOHQ_REPL_NAME"]%>
       username: <%=ENV["MONGOHQ_REPL_USER"]%>
@@ -23,7 +20,6 @@ test:
         - <%=ENV["MONGOHQ_REPL_1_URL"]%>
         - <%=ENV["MONGOHQ_REPL_2_URL"]%>
       options:
-        consistency: :strong
         safe: true
     mongohq_repl_uri:
       uri: <%= ENV["MONGOHQ_REPL_URI"]%>
