@@ -1,4 +1,7 @@
 # encoding: utf-8
+require 'mongoid/core_ext/fields/validators/macro'
+require 'mongoid/core_ext/relations/options'
+
 module Mongoid
 
   # Include this module to get automatic versioning of root level documents.
