@@ -25,7 +25,6 @@ test:
       uri: <%= ENV["MONGOHQ_REPL_URI"]%>
   options:
     allow_dynamic_fields: true
-    identity_map_enabled: false
     include_root_in_json: false
     include_type_for_serialization: false
     preload_models: false
