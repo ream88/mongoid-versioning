@@ -4,5 +4,5 @@ class House
   field :model, type: String
   attr_accessible :name, as: [ :default, :admin ]
 
-  default_scope asc(:name)
+  default_scope ->{ asc(:name) }
 end

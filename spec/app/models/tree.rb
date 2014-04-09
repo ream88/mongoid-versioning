@@ -5,5 +5,5 @@ class Tree
   field :evergreen, type: Boolean
 
   scope :verdant, where(evergreen: true)
-  default_scope asc(:name)
+  default_scope ->{ asc(:name) }
 end
