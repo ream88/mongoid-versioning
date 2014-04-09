@@ -112,7 +112,7 @@ describe Mongoid::Versioning do
 
       before :all do
         class WikiPage
-          default_scope where(author: "Jim")
+          default_scope -> { where(author: "Jim") }
         end
       end
 
