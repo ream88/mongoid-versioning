@@ -5,4 +5,4 @@ gemspec
 gem 'rspec'
 gem 'rake'
 
-gem 'mongoid-paranoia', github: 'haihappen/mongoid-paranoia', branch: 'mongoid4'
+gem 'mongoid-paranoia', '1.0.0.beta1'
