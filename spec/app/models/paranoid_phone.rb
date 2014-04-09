@@ -1,3 +1,5 @@
+require 'mongoid/paranoia'
+
 class ParanoidPhone
   include Mongoid::Document
   include Mongoid::Paranoia
