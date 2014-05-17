@@ -2,7 +2,7 @@
 
 **Important:** This gem is an extraction of [Mongoid::Versioning](http://mongoid.org/en/mongoid/docs/extras.html#versioning) from the official [mongoid](http://mongoid.org) gem. Since Mongoid::Versioning will be removed in the upcoming `4.0.0` release of mongoid, this gem re-enables the functionality of versioned documents.
 
-**Please submit only bug and security fixes**. Neighter I will accept new features nor changes to exiting APIs. Please consider forking the project if you want new features to appear! :)
+**Please submit only bug and security fixes**. Neighter I will accept new features nor changes to existing APIs. Please consider forking the project if you want new features to appear! :)
 
 ---
 
