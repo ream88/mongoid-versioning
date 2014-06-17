@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-paranoia', '1.0.0.beta1'
+gem 'mongoid-paranoia', github: 'JDutil/mongoid-paranoia', branch: 'bump-mongoid'
 
 gem 'rspec'
 gem 'rake'
