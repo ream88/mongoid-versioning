@@ -3,6 +3,6 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # gem 'mongoid-paranoia', path:'../mongoid-paranoia'
-gem 'mongoid-paranoia', '1.0.0.beta1'
+gem 'mongoid-paranoia', github: 'JDutil/mongoid-paranoia', branch: 'bump-mongoid'
 
 gemspec
