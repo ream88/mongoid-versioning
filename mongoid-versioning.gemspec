@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'activesupport'
   gem.add_dependency 'mongoid', '~> 4.0.0'
-  gem.add_development_dependency 'mongoid-paranoia', '1.0.0.beta2'
+  gem.add_development_dependency 'mongoid-paranoia', '1.0.0'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec', '~> 3'
 end
