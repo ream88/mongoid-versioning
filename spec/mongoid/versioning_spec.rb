@@ -245,7 +245,7 @@ describe Mongoid::Versioning do
 
       it "sets versionless to true" do
         page.versionless do |doc|
-          doc.should be_versionless
+          doc.send(:versionless?).should be_truthy
         end
       end
     end
@@ -254,7 +254,7 @@ describe Mongoid::Versioning do
 
       it "sets versionless to false" do
         page.versionless
-        page.should_not be_versionless
+        page.send(:versionless?).should be_falsy
       end
     end
   end
