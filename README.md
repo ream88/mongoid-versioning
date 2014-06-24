@@ -1,6 +1,7 @@
 # mongoid-versioning [![Build Status](https://travis-ci.org/haihappen/mongoid-versioning.png)](https://travis-ci.org/haihappen/mongoid-versioning)
 
-**Important:** This gem is an extraction of [Mongoid::Versioning](http://mongoid.org/en/mongoid/docs/extras.html#versioning) from the official [mongoid](http://mongoid.org) gem. Since Mongoid::Versioning will be removed in the upcoming `4.0.0` release of mongoid, this gem re-enables the functionality of versioned documents.
+**Important:** This gem is an extraction of [Mongoid::Versioning](http://mongoid.org/en/mongoid/v3/extras.html#versioning) from the official [mongoid](http://mongoid.org) gem.
+Since Mongoid::Versioning was removed in the `4.0.0` release of Mongoid, this gem re-enables the functionality of versioned documents.
 
 **Please submit only bug and security fixes**. Neighter I will accept new features nor changes to existing APIs. Please consider forking the project if you want new features to appear! :)
 
@@ -57,7 +58,7 @@ end
 
 (The MIT license)
 
-Copyright (c) 2013 Mario Uher
+Copyright (c) 2014 Mario Uher
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
