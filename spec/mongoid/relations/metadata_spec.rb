@@ -14,7 +14,7 @@ describe Mongoid::Relations::Metadata do
       end
 
       it "returns true" do
-        metadata.should be_versioned
+        expect(metadata).to be_versioned
       end
     end
 
@@ -29,7 +29,7 @@ describe Mongoid::Relations::Metadata do
       end
 
       it "returns false" do
-        metadata.should_not be_versioned
+        expect(metadata).not_to be_versioned
       end
     end
 
@@ -43,7 +43,7 @@ describe Mongoid::Relations::Metadata do
       end
 
       it "returns false" do
-        metadata.should_not be_versioned
+        expect(metadata).not_to be_versioned
       end
     end
   end

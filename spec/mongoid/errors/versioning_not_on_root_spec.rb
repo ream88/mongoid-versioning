@@ -9,19 +9,19 @@ describe Mongoid::Errors::VersioningNotOnRoot do
     end
 
     it "contains the problem in the message" do
-      error.message.should include(
+      expect(error.message).to include(
         "Versioning not allowed on embedded document: Address."
       )
     end
 
     it "contains the summary in the message" do
-      error.message.should include(
+      expect(error.message).to include(
         "Mongoid::Versioning behaviour is only allowed on documents"
       )
     end
 
     it "contains the resolution in the message" do
-      error.message.should include(
+      expect(error.message).to include(
         "Remove the versioning from the embedded Address"
       )
     end

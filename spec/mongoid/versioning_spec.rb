@@ -15,7 +15,7 @@ describe Mongoid::Versioning do
       end
 
       it "sets the class version max" do
-        WikiPage.version_max.should eq(10)
+        expect(WikiPage.version_max).to eq(10)
       end
     end
 
@@ -30,7 +30,7 @@ describe Mongoid::Versioning do
       end
 
       it "sets the class version max" do
-        WikiPage.version_max.should eq(10)
+        expect(WikiPage.version_max).to eq(10)
       end
     end
   end
@@ -42,7 +42,7 @@ describe Mongoid::Versioning do
       context "when the document is new" do
 
         it "returns 1" do
-          WikiPage.new.version.should eq(1)
+          expect(WikiPage.new.version).to eq(1)
         end
       end
 
@@ -53,7 +53,7 @@ describe Mongoid::Versioning do
         end
 
         it "returns 1" do
-          page.version.should eq(1)
+          expect(page.version).to eq(1)
         end
       end
 
@@ -68,7 +68,7 @@ describe Mongoid::Versioning do
         end
 
         it "returns the number of versions" do
-          page.version.should eq(4)
+          expect(page.version).to eq(4)
         end
       end
 
@@ -85,7 +85,7 @@ describe Mongoid::Versioning do
           end
 
           it "returns the number of versions" do
-            page.version.should eq(11)
+            expect(page.version).to eq(11)
           end
         end
       end
@@ -103,7 +103,7 @@ describe Mongoid::Versioning do
         end
 
         it "does not increment the version number" do
-          page.version.should eq(1)
+          expect(page.version).to eq(1)
         end
       end
     end
@@ -123,7 +123,7 @@ describe Mongoid::Versioning do
       context "when the document is new" do
 
         it "returns 1" do
-          WikiPage.new.version.should eq(1)
+          expect(WikiPage.new.version).to eq(1)
         end
       end
 
@@ -134,7 +134,7 @@ describe Mongoid::Versioning do
         end
 
         it "returns 1" do
-          page.version.should eq(1)
+          expect(page.version).to eq(1)
         end
       end
 
@@ -149,7 +149,7 @@ describe Mongoid::Versioning do
         end
 
         it "returns the number of versions" do
-          page.version.should eq(4)
+          expect(page.version).to eq(4)
         end
       end
 
@@ -166,7 +166,7 @@ describe Mongoid::Versioning do
           end
 
           it "returns the number of versions" do
-            page.version.should eq(11)
+            expect(page.version).to eq(11)
           end
         end
       end
@@ -184,7 +184,7 @@ describe Mongoid::Versioning do
         end
 
         it "does not increment the version number" do
-          page.version.should eq(1)
+          expect(page.version).to eq(1)
         end
       end
     end
@@ -200,7 +200,7 @@ describe Mongoid::Versioning do
       context "when the document is persisted once" do
 
         it "returns 1" do
-          page.version.should eq(1)
+          expect(page.version).to eq(1)
         end
 
         it "does not persist to default database" do
@@ -210,7 +210,7 @@ describe Mongoid::Versioning do
         end
 
         it "persists to specified database" do
-          WikiPage.with(database: "mongoid_test_alt").find_by(title: title).should_not be_nil
+          expect(WikiPage.with(database: "mongoid_test_alt").find_by(title: title)).not_to be_nil
         end
       end
 
@@ -221,15 +221,15 @@ describe Mongoid::Versioning do
         end
 
         it "returns the number of versions" do
-          page.version.should eq(4)
+          expect(page.version).to eq(4)
         end
 
         it "persists to specified database" do
-          WikiPage.with(database: "mongoid_test_alt").find_by(:title => title).should_not be_nil
+          expect(WikiPage.with(database: "mongoid_test_alt").find_by(:title => title)).not_to be_nil
         end
 
         it "persists the versions to specified database" do
-          WikiPage.with(database: "mongoid_test_alt").find_by(:title => title).version.should eq(4)
+          expect(WikiPage.with(database: "mongoid_test_alt").find_by(:title => title).version).to eq(4)
         end
       end
     end
@@ -245,7 +245,7 @@ describe Mongoid::Versioning do
 
       it "sets versionless to true" do
         page.versionless do |doc|
-          doc.send(:versionless?).should be_truthy
+          expect(doc.send(:versionless?)).to be_truthy
         end
       end
     end
@@ -254,7 +254,7 @@ describe Mongoid::Versioning do
 
       it "sets versionless to false" do
         page.versionless
-        page.send(:versionless?).should be_falsy
+        expect(page.send(:versionless?)).to be_falsy
       end
     end
   end
@@ -280,23 +280,23 @@ describe Mongoid::Versioning do
         end
 
         it "creates a new version" do
-          version.title.should eq("1")
+          expect(version.title).to eq("1")
         end
 
         it "properly versions the localized fields" do
-          version.description.should eq("test")
+          expect(version.description).to eq("test")
         end
 
         it "only creates 1 new version" do
-          page.versions.count.should eq(1)
+          expect(page.versions.count).to eq(1)
         end
 
         it "does not version the _id" do
-          version._id.should be_nil
+          expect(version._id).to be_nil
         end
 
         it "does version the updated_at timestamp" do
-          version.updated_at.should_not be_nil
+          expect(version.updated_at).not_to be_nil
         end
 
         context "when only updated_at was changed" do
@@ -306,16 +306,16 @@ describe Mongoid::Versioning do
           end
 
           it "does not generate another version" do
-            page.versions.count.should eq(1)
+            expect(page.versions.count).to eq(1)
           end
         end
 
         it "does not embed versions within versions" do
-          version.versions.should be_empty
+          expect(version.versions).to be_empty
         end
 
         it "versions protected fields" do
-          version.author.should eq("woodchuck")
+          expect(version.author).to eq("woodchuck")
         end
 
         context "when saving multiple times" do
@@ -325,11 +325,11 @@ describe Mongoid::Versioning do
           end
 
           it "does not embed versions within versions" do
-            version.versions.should be_empty
+            expect(version.versions).to be_empty
           end
 
           it "does not embed versions multiple levels deep" do
-            page.versions.last.versions.should be_empty
+            expect(page.versions.last.versions).to be_empty
           end
         end
       end
@@ -345,7 +345,7 @@ describe Mongoid::Versioning do
         end
 
         it "does not create a new version" do
-          version.should be_nil
+          expect(version).to be_nil
         end
       end
 
@@ -364,11 +364,11 @@ describe Mongoid::Versioning do
           end
 
           it "only versions the maximum amount" do
-            post.versions.target.size.should eq(2)
+            expect(post.versions.target.size).to eq(2)
           end
 
           it "persists the changes" do
-            post.reload.versions.target.size.should eq(2)
+            expect(post.reload.versions.target.size).to eq(2)
           end
         end
 
@@ -385,15 +385,15 @@ describe Mongoid::Versioning do
           end
 
           it "only versions the maximum amount" do
-            versions.count.should eq(5)
+            expect(versions.count).to eq(5)
           end
 
           it "shifts the versions in order" do
-            versions.last.title.should eq("8")
+            expect(versions.last.title).to eq("8")
           end
 
           it "persists the version shifts" do
-            page.reload.versions.last.title.should eq("8")
+            expect(page.reload.versions.last.title).to eq("8")
           end
         end
 
@@ -416,7 +416,7 @@ describe Mongoid::Versioning do
           end
 
           it "only versions the maximum amount" do
-            versions.count.should eq(5)
+            expect(versions.count).to eq(5)
           end
         end
       end
@@ -428,7 +428,7 @@ describe Mongoid::Versioning do
         end
 
         it "does not version the document" do
-          page.versions.count.should eq(0)
+          expect(page.versions.count).to eq(0)
         end
       end
 
@@ -458,23 +458,23 @@ describe Mongoid::Versioning do
           end
 
           it "does not perform dependent cascading" do
-            from_db.should eq(comment)
+            expect(from_db).to eq(comment)
           end
 
           it "does not delete related orphans" do
-            Comment.find(orphaned.id).should eq(orphaned)
+            expect(Comment.find(orphaned.id)).to eq(orphaned)
           end
 
           it "deletes the version" do
-            page.versions.should be_empty
+            expect(page.versions).to be_empty
           end
 
           it "persists the deletion" do
-            page.reload.versions.should be_empty
+            expect(page.reload.versions).to be_empty
           end
 
           it "retains the root relation" do
-            page.reload.comments.should eq([ comment ])
+            expect(page.reload.comments).to eq([ comment ])
           end
         end
       end
@@ -496,11 +496,11 @@ describe Mongoid::Versioning do
     end
 
     it "allows the document to be added" do
-      page.child_pages.should eq([ child ])
+      expect(page.child_pages).to eq([ child ])
     end
 
     it "persists the changes" do
-      page.reload.child_pages.should eq([ child ])
+      expect(page.reload.child_pages).to eq([ child ])
     end
   end
 end
