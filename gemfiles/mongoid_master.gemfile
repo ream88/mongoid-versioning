@@ -1,9 +1,0 @@
-source 'https://rubygems.org'
-
-gemspec
-
-gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-paranoia', '1.0.0.beta1'
-
-gem 'rspec'
-gem 'rake'
