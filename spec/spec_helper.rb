@@ -18,8 +18,11 @@ ENV["MONGOID_SPEC_PORT"] ||= "27017"
 HOST = ENV["MONGOID_SPEC_HOST"]
 PORT = ENV["MONGOID_SPEC_PORT"].to_i
 
-# Moped.logger.level = Logger::DEBUG
+# Moped.logger.level = Logger::DEBUG # TODO Remove Mongoid 4 support.
 # Mongoid.logger.level = Logger::DEBUG
+if defined?(Mongo)
+  Mongo::Logger.logger.level = Logger::WARN
+end
 
 # When testing locally we use the database named mongoid_test. However when
 # tests are running in parallel on Travis we need to use different database

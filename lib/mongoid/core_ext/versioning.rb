@@ -32,6 +32,7 @@ module Mongoid
     # @example Revise the document.
     #   person.revise
     #
+    # @todo Remove Mongoid 4 support.
     # @since 1.0.0
     def revise
       previous = previous_revision
@@ -44,8 +45,11 @@ module Mongoid
           deleted = versions.first
           if deleted.respond_to?(:paranoid?) && deleted.paranoid?
             versions.delete_one(deleted)
-            collection.find(atomic_selector).
-              update({ "$pull" => { "versions" => { "version" => deleted.version }}})
+
+            query = collection.find(atomic_selector)
+            query.respond_to?(:update_one) ?
+              query.update_one({ "$pull" => { "versions" => { "version" => deleted.version }}}) :
+              query.update({ "$pull" => { "versions" => { "version" => deleted.version }}})
           else
             versions.delete(deleted)
           end
@@ -127,11 +131,16 @@ module Mongoid
     #
     # @return [ Document, nil ] The previously saved document.
     #
+    # @todo Remove Mongoid 4 support.
     # @since 2.0.0
     def previous_revision
+      options = self.respond_to?(:mongo_client) ?
+        self.mongo_client.options.symbolize_keys :
+        self.mongo_session.options
+
       _loading_revision do
         self.class.unscoped.
-          with(self.mongo_session.options).
+          with(options).
           where(_id: id).
           any_of({ version: version }, { version: nil }).first
       end

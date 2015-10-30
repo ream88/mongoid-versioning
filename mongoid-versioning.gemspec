@@ -14,8 +14,8 @@ Gem::Specification.new do |gem|
   gem.require_path  = 'lib'
 
   gem.add_dependency 'activesupport', '~> 4.0'
-  gem.add_dependency 'mongoid', '~> 4.0.0'
-  gem.add_development_dependency 'mongoid-paranoia', '~> 1.0.0'
+  gem.add_dependency 'mongoid', '>= 4.0.0', '<= 6.0.0'
+  gem.add_development_dependency 'mongoid-paranoia', '~> 1.1', '>= 1.1.0'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec', '~> 3'
 end
