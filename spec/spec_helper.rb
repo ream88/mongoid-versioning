@@ -32,6 +32,10 @@ def database_id
   "mongoid_test"
 end
 
+def database_id_alt
+  "mongoid_test_alt"
+end
+
 # Can we connect to MongoHQ from this box?
 def mongohq_connectable?
   ENV["MONGOHQ_REPL_PASS"].present?
@@ -70,9 +74,8 @@ RSpec.configure do |config|
   config.after(:suite) do
     if ENV["CI"]
       if defined?(Mongo)
-        %w[mongoid_test mongoid_test_alt].each do |database|
-          Mongo::Client.new(["#{HOST}:#{PORT}"], database: database).database.drop
-        end
+        Mongo::Client.new(["#{HOST}:#{PORT}"], database: database_id).database.drop
+        Mongo::Client.new(["#{HOST}:#{PORT}"], database: database_id_alt).database.drop
       else
         Mongoid::Threaded.sessions[:default].drop
       end

@@ -194,7 +194,7 @@ describe Mongoid::Versioning do
       let(:title) { "my new wiki" }
 
       let!(:page) do
-        WikiPage.with(database: "mongoid_test_alt").create!(description: "1",title: title)
+        WikiPage.with(database: database_id_alt).create!(description: "1",title: title)
       end
 
       context "when the document is persisted once" do
@@ -210,14 +210,14 @@ describe Mongoid::Versioning do
         end
 
         it "persists to specified database" do
-          expect(WikiPage.with(database: "mongoid_test_alt").find_by(title: title)).not_to be_nil
+          expect(WikiPage.with(database: database_id_alt).find_by(title: title)).not_to be_nil
         end
       end
 
       context "when the document is persisted more than once" do
 
         before do
-          3.times { |n| page.with(database: "mongoid_test_alt").update_attribute(:description, "#{n}") }
+          3.times { |n| page.with(database: database_id_alt).update_attribute(:description, "#{n}") }
         end
 
         it "returns the number of versions" do
@@ -225,16 +225,16 @@ describe Mongoid::Versioning do
         end
 
         it "persists to specified database" do
-          expect(WikiPage.with(database: "mongoid_test_alt").find_by(:title => title)).not_to be_nil
+          expect(WikiPage.with(database: database_id_alt).find_by(:title => title)).not_to be_nil
         end
 
         it "persists the versions to specified database" do
-          expect(WikiPage.with(database: "mongoid_test_alt").find_by(:title => title).version).to eq(4)
+          expect(WikiPage.with(database: database_id_alt).find_by(:title => title).version).to eq(4)
         end
       end
 
       after do
-        WikiPage.with(database: "mongoid_test_alt").delete_all
+        WikiPage.with(database: database_id_alt).delete_all
       end
     end
   end
