@@ -232,6 +232,10 @@ describe Mongoid::Versioning do
           expect(WikiPage.with(database: "mongoid_test_alt").find_by(:title => title).version).to eq(4)
         end
       end
+
+      after do
+        WikiPage.with(database: "mongoid_test_alt").delete_all
+      end
     end
   end
 
