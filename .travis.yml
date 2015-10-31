@@ -6,3 +6,8 @@ rvm:
   - 2.0.0
   - 2.1.0
   - 2.2.0
+
+gemfile:
+  - Gemfile
+  - gemfiles/Mongoid_4.gemfile
+  - gemfiles/Mongoid_5.gemfile
