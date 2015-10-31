@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/haihappen/mongoid-versioning'
   gem.summary       = 'Extraction of mongoid-versioning into its own gem.'
   gem.description   = "Mongoid supports simple versioning through inclusion of the Mongoid::Versioning module."
-  gem.license       = ['MIT']
+  gem.licenses      = ['MIT']
 
   gem.files         = `git ls-files`.split("\n")
   gem.require_path  = 'lib'
