@@ -389,7 +389,7 @@ describe Mongoid::Versioning do
           end
 
           it "only versions the maximum amount" do
-            expect(versions.count).to eq(5)
+            expect(page.reload.versions.count).to eq(5)
           end
 
           it "shifts the versions in order" do
@@ -398,6 +398,7 @@ describe Mongoid::Versioning do
 
           it "persists the version shifts" do
             expect(page.reload.versions.last.title).to eq("8")
+            expect(page.reload.versions.first.title).to eq("4")
           end
         end
 
