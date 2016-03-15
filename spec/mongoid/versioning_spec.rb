@@ -384,16 +384,12 @@ describe Mongoid::Versioning do
             end
           end
 
-          let(:versions) do
-            page.versions
-          end
-
           it "only versions the maximum amount" do
             expect(page.reload.versions.count).to eq(5)
           end
 
           it "shifts the versions in order" do
-            expect(versions.last.title).to eq("8")
+            expect(page.reload.versions.last.title).to eq("8")
           end
 
           it "persists the version shifts" do
