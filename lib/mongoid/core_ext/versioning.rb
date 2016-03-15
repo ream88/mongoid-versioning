@@ -52,6 +52,8 @@ module Mongoid
               query.update({ "$pull" => { "versions" => { "version" => deleted.version }}})
           else
             versions.delete(deleted)
+            # version_to_delete = versions.first.version
+            # versions.where(version: version_to_delete).delete_all
           end
         end
         self.version = (version || 1 ) + 1
