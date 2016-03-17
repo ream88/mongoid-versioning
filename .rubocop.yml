@@ -1,0 +1,20 @@
+AllCops:
+  TargetRubyVersion: 2.2
+
+Documentation:
+  Enabled: false
+
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/IndentArray:
+  EnforcedStyle: consistent
+
+Style/IndentHash:
+  EnforcedStyle: consistent
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
