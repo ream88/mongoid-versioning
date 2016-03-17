@@ -12,22 +12,22 @@ module Mongoid
       #
       # @since 2.0.0.rc.1
       def inspect
-%Q{#<Mongoid::Relations::Metadata
-  autobuild:    #{autobuilding?}
-  class_name:   #{class_name}
-  cyclic:       #{cyclic.inspect}
-  counter_cache:#{counter_cached?}
-  dependent:    #{dependent.inspect}
-  inverse_of:   #{inverse_of.inspect}
-  key:          #{key}
-  macro:        #{macro}
-  name:         #{name}
-  order:        #{order.inspect}
-  polymorphic:  #{polymorphic?}
-  relation:     #{relation}
-  setter:       #{setter}
-  versioned:    #{versioned?}>
-}
+        %(#<Mongoid::Relations::Metadata
+          autobuild:    #{autobuilding?}
+          class_name:   #{class_name}
+          cyclic:       #{cyclic.inspect}
+          counter_cache:#{counter_cached?}
+          dependent:    #{dependent.inspect}
+          inverse_of:   #{inverse_of.inspect}
+          key:          #{key}
+          macro:        #{macro}
+          name:         #{name}
+          order:        #{order.inspect}
+          polymorphic:  #{polymorphic?}
+          relation:     #{relation}
+          setter:       #{setter}
+          versioned:    #{versioned?}>
+        )
       end
 
       # Is this relation using Mongoid's internal versioning system?

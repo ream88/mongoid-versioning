@@ -1,6 +1,5 @@
 # encoding: utf-8
 module Mongoid
-
   # Include this module to get automatic versioning of root level documents.
   # This will add a version field to the +Document+ and a has_many association
   # with all the versions contained in it.
@@ -12,7 +11,7 @@ module Mongoid
 
       embeds_many \
         :versions,
-        class_name: self.name,
+        class_name: name,
         validate: false,
         cyclic: true,
         inverse_of: nil,
@@ -49,13 +48,13 @@ module Mongoid
 
             query = collection.find(atomic_selector)
             query.respond_to?(:update_one) ?
-              query.update_one({ "$pull" => { "versions" => { "version" => version_to_delete }}}) :
-              query.update({ "$pull" => { "versions" => { "version" => version_to_delete }}})
+              query.update_one('$pull' => { 'versions' => { 'version' => version_to_delete } }) :
+              query.update('$pull' => { 'versions' => { 'version' => version_to_delete } })
           else
             versions.where(version: version_to_delete).delete_all
           end
         end
-        self.version = (version || 1 ) + 1
+        self.version = (version || 1) + 1
       end
     end
 
@@ -71,7 +70,7 @@ module Mongoid
         (previous_revision || self).versioned_attributes
       )
       versions.shift if version_max.present? && versions.length > version_max
-      self.version = (version || 1 ) + 1
+      self.version = (version || 1) + 1
       save
     end
 
@@ -82,7 +81,7 @@ module Mongoid
     #
     # @since 2.1.0
     def versioned_changes
-      only_versioned_attributes(changes.except("updated_at"))
+      only_versioned_attributes(changes.except('updated_at'))
     end
 
     # Filters the results of +attributes+ by removing any fields that should
@@ -135,15 +134,15 @@ module Mongoid
     # @todo Remove Mongoid 4 support.
     # @since 2.0.0
     def previous_revision
-      options = self.respond_to?(:mongo_client) ?
-        self.mongo_client.options.symbolize_keys :
-        self.mongo_session.options
+      options = respond_to?(:mongo_client) ?
+        mongo_client.options.symbolize_keys :
+        mongo_session.options
 
       _loading_revision do
-        self.class.unscoped.
-          with(options).
-          where(_id: id).
-          any_of({ version: version }, { version: nil }).first
+        self.class.unscoped
+            .with(options)
+            .where(_id: id)
+            .any_of({ version: version }, version: nil).first
       end
     end
 
@@ -183,7 +182,7 @@ module Mongoid
     # @since 2.1.0
     def only_versioned_attributes(hash)
       versioned = {}
-      hash.except("versions").each_pair do |name, value|
+      hash.except('versions').each_pair do |name, value|
         add_versioned_attribute(versioned, name, value)
       end
       versioned
@@ -211,7 +210,6 @@ module Mongoid
     end
 
     module ClassMethods
-
       # Sets the maximum number of versions to store.
       #
       # @example Set the maximum.

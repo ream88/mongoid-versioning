@@ -1,4 +1,4 @@
-$: << File.expand_path('../lib', __FILE__)
+$LOAD_PATH << File.expand_path('../lib', __FILE__)
 require 'mongoid/versioning/version'
 
 Gem::Specification.new do |gem|
@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['durran@gmail.com', 'uher.mario@gmail.com']
   gem.homepage      = 'https://github.com/haihappen/mongoid-versioning'
   gem.summary       = 'Extraction of mongoid-versioning into its own gem.'
-  gem.description   = "Mongoid supports simple versioning through inclusion of the Mongoid::Versioning module."
+  gem.description   = 'Mongoid supports simple versioning through inclusion of the Mongoid::Versioning module.'
   gem.licenses      = ['MIT']
 
   gem.files         = `git ls-files`.split("\n")

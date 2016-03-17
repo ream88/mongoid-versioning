@@ -2,6 +2,7 @@ module Mongoid
   module Threaded
     module Lifecycle
       private
+
       # Execute a block in loading revision mode.
       #
       # @example Execute in loading revision mode.
@@ -13,10 +14,10 @@ module Mongoid
       #
       # @since 2.3.4
       def _loading_revision
-        Threaded.begin_execution("load_revision")
+        Threaded.begin_execution('load_revision')
         yield
       ensure
-        Threaded.exit_execution("load_revision")
+        Threaded.exit_execution('load_revision')
       end
 
       module ClassMethods
@@ -29,7 +30,7 @@ module Mongoid
         #
         # @since 2.3.4
         def _loading_revision?
-          Threaded.executing?("load_revision")
+          Threaded.executing?('load_revision')
         end
       end
     end
