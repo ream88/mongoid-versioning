@@ -42,16 +42,17 @@ module Mongoid
         )
         new_version._id = nil
         if version_max.present? && versions.length > version_max
-          deleted = versions.first
-          if deleted.respond_to?(:paranoid?) && deleted.paranoid?
-            versions.delete_one(deleted)
+          to_delete = versions.first
+          version_to_delete = to_delete.version
+          if to_delete.respond_to?(:paranoid?) && to_delete.paranoid?
+            versions.delete_one(to_delete)
 
             query = collection.find(atomic_selector)
             query.respond_to?(:update_one) ?
-              query.update_one({ "$pull" => { "versions" => { "version" => deleted.version }}}) :
-              query.update({ "$pull" => { "versions" => { "version" => deleted.version }}})
+              query.update_one({ "$pull" => { "versions" => { "version" => version_to_delete }}}) :
+              query.update({ "$pull" => { "versions" => { "version" => version_to_delete }}})
           else
-            versions.delete(deleted)
+            versions.where(version: version_to_delete).delete_all
           end
         end
         self.version = (version || 1 ) + 1
