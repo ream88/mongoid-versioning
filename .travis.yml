@@ -12,3 +12,4 @@ gemfile:
   - Gemfile
   - gemfiles/Mongoid_4.gemfile
   - gemfiles/Mongoid_5.gemfile
+  - gemfiles/Mongoid_6.gemfile
