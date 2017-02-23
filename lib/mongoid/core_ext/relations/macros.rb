@@ -24,7 +24,7 @@ module Mongoid
         # @param [ Proc ] block Optional block for defining extensions.
         def embedded_in(name, options = {}, &block)
           if ancestors.include?(Mongoid::Versioning)
-            raise Errors::VersioningNotOnRoot.new(self)
+            raise Errors::VersioningNotOnRoot, self
           end
           meta = characterize(name, Embedded::In, options, &block)
           self.embedded = true

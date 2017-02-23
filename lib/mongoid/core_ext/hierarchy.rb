@@ -13,10 +13,12 @@ module Mongoid
       embedded_relations.each_pair do |name, metadata|
         without_autobuild do
           child = send(name)
-          Array.wrap(child).each do |doc|
-            children.push(doc)
-            children.concat(doc._children) unless metadata.versioned?
-          end if child
+          if child
+            Array.wrap(child).each do |doc|
+              children.push(doc)
+              children.concat(doc._children) unless metadata.versioned?
+            end
+          end
         end
       end
       children
