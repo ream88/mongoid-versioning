@@ -8,8 +8,17 @@ rvm:
   - 2.2.0
   - 2.3.0
 
+# mongoid 6.x >= activesupport 5.x >= ruby 2.2
+matrix:
+  exclude:
+    - rvm: 2.0.0
+      gemfile: gemfiles/Mongoid_6.gemfile
+    - rvm: 2.1.0
+      gemfile: gemfiles/Mongoid_6.gemfile
+    - rvm: 2.2.0
+      gemfile: gemfiles/Mongoid_6.gemfile
+
 gemfile:
-  - Gemfile
   - gemfiles/Mongoid_4.gemfile
   - gemfiles/Mongoid_5.gemfile
   - gemfiles/Mongoid_6.gemfile
