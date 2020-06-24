@@ -139,10 +139,11 @@ module Mongoid
         mongo_session.options
 
       _loading_revision do
-        self.class.unscoped
-          .with(options)
-          .where(_id: id)
-          .any_of({ version: version }, version: nil).first
+        self.class.with(options) do |m|
+          m.unscoped
+           .where(_id: id)
+           .any_of({ version: version }, version: nil).first
+        end
       end
     end
 
