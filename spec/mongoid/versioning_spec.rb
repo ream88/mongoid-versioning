@@ -323,26 +323,6 @@ describe Mongoid::Versioning do
       end
 
       context 'when saving over the number of maximum versions' do
-        context 'when the document is paranoid' do
-          let!(:post) do
-            ParanoidPost.create(title: 'test')
-          end
-
-          before do
-            3.times do |n|
-              post.update_attribute(:title, n.to_s)
-            end
-          end
-
-          it 'only versions the maximum amount' do
-            expect(post.versions.target.size).to eq(2)
-          end
-
-          it 'persists the changes' do
-            expect(post.reload.versions.target.size).to eq(2)
-          end
-        end
-
         context 'when saving in succession' do
           before do
             10.times do |n|

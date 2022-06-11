@@ -2,5 +2,4 @@ source 'https://rubygems.org'
 gemspec path: '../'
 
 gem 'activesupport', '~> 5.0'
-# gem 'mongoid-paranoia', github: 'ream88/mongoid-paranoia' # Fix chicken or the egg
 gem 'mongoid', '~> 6.0'
