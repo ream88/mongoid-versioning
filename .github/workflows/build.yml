@@ -5,8 +5,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['2.7']
-        mongoid: ['4', '5', '6']
+        ruby: ['2.5', '2.6']
+        mongoid: ['5']
         mongodb: ['4.4', '5.0']
 
     runs-on: ubuntu-latest
@@ -28,7 +28,6 @@ jobs:
         MATRIX_MONGOID_VERSION: ${{ matrix.mongoid }}
       run: |
         export BUNDLE_GEMFILE="${GITHUB_WORKSPACE}/gemfiles/Mongoid_${MATRIX_MONGOID_VERSION}.gemfile"
-        gem install bundler
         bundle install --jobs 4 --retry 3
 
     - run: bundle exec rspec
