@@ -1,4 +1,4 @@
-# mongoid-versioning ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=master)
+# mongoid-versioning ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid6)
 
 **Important:** This gem is an extraction of [Mongoid::Versioning](http://mongoid.github.io/en/mongoid/docs/extras.html#versioning) from the official [mongoid](http://mongoid.org) gem.
 Since Mongoid::Versioning was removed in the `4.0.0` release of Mongoid, this gem re-enables the functionality of versioned documents.

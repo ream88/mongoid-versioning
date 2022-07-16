@@ -31,7 +31,6 @@ module Mongoid
     # @example Revise the document.
     #   person.revise
     #
-    # @todo Remove Mongoid 4 support.
     # @since 1.0.0
     def revise
       previous = previous_revision
@@ -123,12 +122,9 @@ module Mongoid
     #
     # @return [ Document, nil ] The previously saved document.
     #
-    # @todo Remove Mongoid 4 support.
     # @since 2.0.0
     def previous_revision
-      options = respond_to?(:mongo_client) ?
-        mongo_client.options.symbolize_keys :
-        mongo_session.options
+      options = mongo_client.options.symbolize_keys
 
       _loading_revision do
         self.class.with(options) do |m|

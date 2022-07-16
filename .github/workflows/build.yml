@@ -5,8 +5,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['2.5', '2.6']
-        mongoid: ['5']
+        ruby: ['2.7']
+        mongoid: ['6']
         mongodb: ['4.4', '5.0']
 
     runs-on: ubuntu-latest
