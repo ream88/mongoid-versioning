@@ -199,7 +199,7 @@ describe Mongoid::Versioning do
 
       context 'when the document is persisted more than once' do
         before do
-          skip "Mongoid 6 bug: https://jira.mongodb.org/browse/MONGOID-5379"
+          skip "Mongoid 7 bug: https://jira.mongodb.org/browse/MONGOID-5379"
           3.times do |n|
             page.with(database: database_id_alt) do |page_alt|
               page_alt.update_attribute(:description, n.to_s)
@@ -253,9 +253,10 @@ describe Mongoid::Versioning do
 
   describe '#versions' do
     let(:page) do
-      WikiPage.create(title: '1', description: 'test') do |wiki|
+      pg = WikiPage.create!(title: '1', description: 'test') do |wiki|
         wiki.author = 'woodchuck'
       end
+      pg
     end
 
     context 'when saving the document ' do
@@ -339,7 +340,7 @@ describe Mongoid::Versioning do
         context 'when saving in succession' do
           before do
             10.times do |n|
-              page.update_attribute(:title, n.to_s)
+              page.update(title: n.to_s)
             end
           end
 

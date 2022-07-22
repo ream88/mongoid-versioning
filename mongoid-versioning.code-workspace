@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../mongoid-test"
+		}
+	],
+	"settings": {
+		"ruby.rubocop.onSave": false
+	}
+}

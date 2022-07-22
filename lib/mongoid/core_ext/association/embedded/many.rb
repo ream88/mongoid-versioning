@@ -1,7 +1,7 @@
 module Mongoid
-  module Relations
+  module Association
     module Embedded
-      class Many < Relations::Many
+      class Many < Association::Many
         class << self
           # Get the valid options allowed with this relation.
           #

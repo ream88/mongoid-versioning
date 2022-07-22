@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Mongoid::Relations::Macros do
+describe Mongoid::Association::Macros do
   describe '.embedded_in' do
     context 'when the document is versioned' do
       it 'raises an error' do

@@ -1,5 +1,5 @@
 module Mongoid
-  module Relations
+  module Association
     module Cascading
       # Perform all cascading deletes, destroys, or nullifies. Will delegate to
       # the appropriate strategy to perform the operation.
