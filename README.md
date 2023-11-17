@@ -19,7 +19,8 @@ This fork has additional changes to support the following mongoid/ruby versions:
 |-----------------|-----------------------------------------------------------------------------------|--------------------------|------------------------|-------|
 | mongoid <5      | [master](https://github.com/fullhealthmedical/mongoid-versioning/tree/master)     | Yes                      | 2.5, 2.6               | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=master) |
 | mongoid 6       | [mongoid6](https://github.com/fullhealthmedical/mongoid-versioning/tree/mongoid6) | No                       | 2.7                    | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid6) |
-| mongoid >= 7.0  | [mongoid7](https://github.com/fullhealthmedical/mongoid-versioning/tree/mongoid7) | No                       | 2.7                    | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid7) |
+| mongoid >= 7.0 < 7.3.5 | [mongoid7](https://github.com/fullhealthmedical/mongoid-versioning/tree/mongoid7) | No                       | 2.7                    | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid7) |
+| mongoid >= 7.0 < 7.3.5 | [mongoid7](https://github.com/fullhealthmedical/mongoid-versioning/tree/mongoid73) | No                       | 2.7                    | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid73) |
 
 In your Gemfile:
 
