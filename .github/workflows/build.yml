@@ -1,12 +1,12 @@
 name: Build
-on: [push, pull_request]
+on: [push]
 jobs:
   test:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['2.7']
-        mongoid: ['7']
+        ruby: ['3.0', '3.1']
+        mongoid: ['71']
         mongodb: ['4.4', '5.0']
 
     runs-on: ubuntu-latest
@@ -28,4 +28,3 @@ jobs:
         export BUNDLE_GEMFILE="${GITHUB_WORKSPACE}/gemfiles/Mongoid_${{ matrix.mongoid }}.gemfile"
         bundle install --jobs 4 --retry 3
     - run: bundle exec rspec
-

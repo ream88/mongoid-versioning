@@ -53,6 +53,8 @@ end
 module Rails
   class Application
   end
+
+  def self.logger; nil; end
 end
 
 module MyApp
