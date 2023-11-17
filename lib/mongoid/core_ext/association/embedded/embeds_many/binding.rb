@@ -1,8 +1,10 @@
 module Mongoid
-  module Relations
-    module Bindings
-      module Embedded
-        class Many < Binding
+  module Association
+    module Embedded
+      class EmbedMany
+        class Binding
+          include Bindable
+
           # Binds a single document with the inverse relation. Used
           # specifically when appending to the proxy.
           #
@@ -17,10 +19,10 @@ module Mongoid
           #
           # @since 2.0.0.rc.1
           def bind_one(doc)
-            doc.parentize(base)
+            doc.parentize(_base)
             binding do
               unless metadata.versioned?
-                doc.do_or_do_not(metadata.inverse_setter(target), base)
+                doc.do_or_do_not(_association.inverse_setter(_target), base)
               end
             end
           end

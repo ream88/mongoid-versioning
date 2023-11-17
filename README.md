@@ -1,4 +1,4 @@
-# mongoid-versioning [![Build Status](https://travis-ci.org/haihappen/mongoid-versioning.png)](https://travis-ci.org/haihappen/mongoid-versioning)
+# mongoid-versioning ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid6)
 
 **Important:** This gem is an extraction of [Mongoid::Versioning](http://mongoid.github.io/en/mongoid/docs/extras.html#versioning) from the official [mongoid](http://mongoid.org) gem.
 Since Mongoid::Versioning was removed in the `4.0.0` release of Mongoid, this gem re-enables the functionality of versioned documents.
@@ -11,10 +11,20 @@ Mongoid supports simple versioning through inclusion of the `Mongoid::Versioning
 
 ## Installation
 
+### Mongoid/Ruby compatibility
+
+This fork has additional changes to support the following mongoid/ruby versions:
+
+|                 | branch                                                                            | mongoid-paranoid support | Tested ruby version(s) | Build |
+|-----------------|-----------------------------------------------------------------------------------|--------------------------|------------------------|-------|
+| mongoid <5      | [master](https://github.com/fullhealthmedical/mongoid-versioning/tree/master)     | Yes                      | 2.5, 2.6               | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=master) |
+| mongoid 6       | [mongoid6](https://github.com/fullhealthmedical/mongoid-versioning/tree/mongoid6) | No                       | 2.7                    | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid6) |
+| mongoid >= 7.0  | [mongoid7](https://github.com/fullhealthmedical/mongoid-versioning/tree/mongoid7) | No                       | 2.7                    | ![Build](https://github.com/fullhealthmedical/mongoid-versioning/actions/workflows/build.yml/badge.svg?branch=mongoid7) |
+
 In your Gemfile:
 
 ```ruby
-gem 'mongoid-versioning'
+gem 'mongoid-versioning', git: 'https://github.com/fullhealthmedical/mongoid-versioning', branch: 'master'
 ```
 
 ## Usage

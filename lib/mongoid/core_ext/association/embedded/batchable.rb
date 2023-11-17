@@ -1,5 +1,5 @@
 module Mongoid
-  module Relations
+  module Association
     module Embedded
       module Batchable
         # Pre process the batch removal.
@@ -19,15 +19,15 @@ module Mongoid
           docs.map do |doc|
             self.path = doc.atomic_path unless path
             execute_callback :before_remove, doc
-            if !_assigning? && !metadata.versioned?
-              doc.cascade!
+            if !_assigning? && !association.versioned?
+              doc.apply_destroy_dependencies!
               doc.run_before_callbacks(:destroy) if method == :destroy
             end
-            target.delete_one(doc)
+            _target.delete_one(doc)
             _unscoped.delete_one(doc)
             unbind_one(doc)
             execute_callback :after_remove, doc
-            doc.as_document
+            doc.send(:as_attributes)
           end
         end
       end
